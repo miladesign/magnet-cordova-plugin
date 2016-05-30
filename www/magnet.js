@@ -3,20 +3,39 @@ var magnet = {
         TOP: 100,
         BOTTOM: 101
     },
-    Event: {
-        onInterstitialAdReceived :"onMagnetInterstitialAdReceived",
-        onInterstitialAdFailed :"onMagnetInterstitialAdFailed",
-    },
-    
-	MagnetInitialize: function (successCallback, failureCallback) {
+    	MagnetInitialize: function(successCallback, failureCallback) {
+		var self = this;	
         cordova.exec(
+            function (result) {
+				if (typeof result == "string") {
+					if (result == "onMagnetInterstitialAdReceived") {					
+						if (self.onInterstitialAdReceived)
+							self.onInterstitialAdReceived();
+					}
+					else if (result == "onMagnetInterstitialAdFailed") {
+						if (self.onInterstitialAdFailed)
+							self.onInterstitialAdFailed();
+					}
+				}
+				else {
+					//var event = result["event"];
+					//var location = result["message"];				
+					//if (event == "onXXX") {
+					//	if (self.onXXX)
+					//		self.onXXX(location);
+					//}
+				}			
+			}, 
+			function (error) {
+			},
             successCallback,
             failureCallback,
             'MagnetCordovaPlugin',
             'initialize',
             []
-        );
+        ); 
     },
+	
     MagnetSetTestMode: function (testMode, successCallback, failureCallback) {
         cordova.exec(
             successCallback,
@@ -28,6 +47,7 @@ var magnet = {
             ]
         );
     },
+	
 	MagnetLoadInterstitial: function (addUnitId, successCallback, failureCallback) {
         cordova.exec(
             successCallback,
@@ -39,6 +59,7 @@ var magnet = {
             ]
         );
     },
+	
     MagnetShowInterstitial: function (successCallback, failureCallback) {
         cordova.exec(
             successCallback,
@@ -48,6 +69,7 @@ var magnet = {
             []
         );
     },
+	
     MagnetShowBanner: function (addUnitId, position, successCallback, failureCallback) {
         cordova.exec(
             successCallback,
@@ -59,6 +81,7 @@ var magnet = {
             ]
         );
     },
+	
     MagnetRemoveBanner: function (successCallback, failureCallback) {
         cordova.exec(
             successCallback,
@@ -69,4 +92,5 @@ var magnet = {
         );
     }
 };
+
 module.exports = magnet;
