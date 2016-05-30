@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="magnet"
+    version="1.0.0">
+    <name>Magnet</name>
+    <description>Magnet plugin is a cordova and phonegap advertising pluging to mometise your apps using html5 and js</description>
+    <license>Apache 2.0</license>
+    <keywords>magnet, ad, cordova, phonegap, html5, js</keywords>
+	<author>Payam Hesami</author>
+    <repo>https://github.com/miladesign/magnet-cordova-plugin</repo>
+	<issue>https://github.com/miladesign/magnet-cordova-plugin/issues</issue>
+	
+	<engines>
+        <engine name="cordova" version=">=3.0" />
+    </engines>
+
+    <js-module src="www/magnet.js" name="magnet">
+        <clobbers target="window.magnet" />
+    </js-module>
+
+	<platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="MagnetCordovaPlugin" >
+                <param name="android-package" value="ir.magnet.facade.cordova.MagnetCordovaPlugin"/>
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+			<activity  android:name="ir.magnet.sdk.MagnetInterstitialActivity"  android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+			<uses-permission android:name="android.permission.INTERNET" />
+			<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+			<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+        </config-file>
+        
+        <source-file src="src/android/libs/magnet-android-sdk-cordova-4.0.5.jar" target-dir="libs/"/>
+    </platform>
+
+</plugin>

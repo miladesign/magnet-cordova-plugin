@@ -1,0 +1,37 @@
+{
+  "name": "magnet-cordova-plugin",
+  "version": "1.0.0",
+  "description": "Magnet plugin is a cordova and phonegap advertising pluging to mometise your apps using html5 and js",
+  "cordova": {
+    "id": "magnet",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MagnetAdServices/magnet-cordova-plugin.git"
+  },
+  "keywords": [
+    "magnet",
+    "ad",
+    "cordova",
+    "phonegap",
+    "html5",
+    "js",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "Payam Hesami",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/MagnetAdServices/magnet-cordova-plugin/issues"
+  },
+  "homepage": "https://github.com/MagnetAdServices/magnet-cordova-plugin#readme",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0"
+    }
+  ]
+}
