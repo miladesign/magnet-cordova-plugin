@@ -30,7 +30,7 @@ var magnet = {
 			},
             successCallback,
             failureCallback,
-            'MagnetCordovaPlugin',
+            'MdMagnet',
             'initialize',
             []
         ); 
@@ -40,7 +40,7 @@ var magnet = {
         cordova.exec(
             successCallback,
             failureCallback,
-            'MagnetCordovaPlugin',
+            'MdMagnet',
             'setTestMode',
             [
                 {'TEST_MODE': testMode}
@@ -52,7 +52,7 @@ var magnet = {
         cordova.exec(
             successCallback,
             failureCallback,
-            'MagnetCordovaPlugin',
+            'MdMagnet',
             'loadInterstitial',
 			[
 				{'AD_UNIT_ID': addUnitId}
@@ -64,7 +64,7 @@ var magnet = {
         cordova.exec(
             successCallback,
             failureCallback,
-            'MagnetCordovaPlugin',
+            'MdMagnet',
             'showInterstitial',
             []
         );
@@ -74,7 +74,7 @@ var magnet = {
         cordova.exec(
             successCallback,
             failureCallback,
-            'MagnetCordovaPlugin',
+            'MdMagnet',
             'ShowBanner',
             [
                 {'AD_UNIT_ID': addUnitId, 'BANNER_POSITION': position}
@@ -86,7 +86,7 @@ var magnet = {
         cordova.exec(
             successCallback,
             failureCallback,
-            'MagnetCordovaPlugin',
+            'MdMagnet',
             'removeBanner',
             []
         );

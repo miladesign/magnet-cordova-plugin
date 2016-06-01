@@ -22,8 +22,8 @@
 
 	<platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="MagnetCordovaPlugin" >
-                <param name="android-package" value="ir.magnet.facade.cordova.MagnetCordovaPlugin"/>
+            <feature name="MdMagnet" >
+                <param name="android-package" value="ir.magnet.cordova.MdMagnet"/>
             </feature>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
@@ -36,7 +36,8 @@
 			<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
         </config-file>
         
-        <source-file src="src/android/libs/magnet-android-sdk-cordova-4.0.5.jar" target-dir="libs/"/>
+		<source-file src="src/android/MdMagnet.jar" target-dir="ir.magnet.cordova"/>
+        <source-file src="src/android/magnet-android-sdk-cordova-4.0.5.jar" target-dir="libs"/>
     </platform>
 
 </plugin>
