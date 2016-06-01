@@ -36,7 +36,7 @@
 			<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
         </config-file>
         
-		<source-file src="src/android/MdMagnet.jar" target-dir="ir.magnet.cordova"/>
+		<source-file src="src/android/MdMagnet.java" target-dir="ir.magnet.cordova"/>
         <source-file src="src/android/magnet-android-sdk-cordova-4.0.5.jar" target-dir="libs"/>
     </platform>
 
