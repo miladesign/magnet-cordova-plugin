@@ -1,96 +1,136 @@
-var magnet = {
-    Position: {
+module.exports = {
+	Position: {
         TOP: 100,
         BOTTOM: 101
     },
-    	MagnetInitialize: function(successCallback, failureCallback) {
-		var self = this;	
+	MagnetInitialize: function () {
+		var self = this;
         cordova.exec(
-            function (result) {
-				if (typeof result == "string") {
-					if (result == "onMagnetInterstitialAdReceived") {					
-						if (self.onInterstitialAdReceived)
-							self.onInterstitialAdReceived();
-					}
-					else if (result == "onMagnetInterstitialAdFailed") {
-						if (self.onInterstitialAdFailed)
-							self.onInterstitialAdFailed();
-					}
-				}
-				else {
-					//var event = result["event"];
-					//var location = result["message"];				
-					//if (event == "onXXX") {
-					//	if (self.onXXX)
-					//		self.onXXX(location);
-					//}
-				}			
-			}, 
-			function (error) {
-			},
-            successCallback,
-            failureCallback,
-            'MdMagnet',
+			function (success) {
+                console.log('Initialize successed.');
+            },
+            function (error) {
+                console.log('Initialize failed.');
+            },
+			'MagnetCordovaPlugin',
             'initialize',
             []
-        ); 
+        );
     },
-	
-    MagnetSetTestMode: function (testMode, successCallback, failureCallback) {
+	MagnetSetTestMode: function (testMode) {
         cordova.exec(
-            successCallback,
-            failureCallback,
-            'MdMagnet',
+            null,
+            null,
+            'MagnetCordovaPlugin',
             'setTestMode',
             [
                 {'TEST_MODE': testMode}
             ]
         );
     },
-	
-	MagnetLoadInterstitial: function (addUnitId, successCallback, failureCallback) {
+	MagnetLoadInterstitial: function (addUnitId) {
+		var self = this;
         cordova.exec(
-            successCallback,
-            failureCallback,
-            'MdMagnet',
+			function (result) {
+				if (typeof result == "string") {
+					if (result == "onMagnetInterstitialAdReceived") {
+						if (self.onMagnetInterstitialAdReceived)
+							self.onMagnetInterstitialAdReceived();
+					}
+					else if (result == "onMagnetInterstitialAdFailed") {
+						if (self.onMagnetInterstitialAdFailed)
+							self.onMagnetInterstitialAdFailed();
+					}
+				}
+				console.log(result);
+            },
+            null,
+            'MagnetCordovaPlugin',
             'loadInterstitial',
 			[
 				{'AD_UNIT_ID': addUnitId}
             ]
         );
     },
-	
-    MagnetShowInterstitial: function (successCallback, failureCallback) {
+    MagnetShowInterstitial: function () {
         cordova.exec(
-            successCallback,
-            failureCallback,
-            'MdMagnet',
+            null,
+            null,
+            'MagnetCordovaPlugin',
             'showInterstitial',
             []
         );
     },
-	
-    MagnetShowBanner: function (addUnitId, position, successCallback, failureCallback) {
+	MagnetLoadRewardAd: function (addUnitId) {
+		var self = this;
         cordova.exec(
-            successCallback,
-            failureCallback,
-            'MdMagnet',
+            function (result) {
+				if (typeof result == "string") {
+					if (result == "onMagnetRewardAdReceived") {
+						if (self.onMagnetRewardAdReceived)
+							self.onMagnetRewardAdReceived();
+					}
+					else if (result == "onMagnetRewardAdFailed") {
+						if (self.onMagnetRewardAdFailed)
+							self.onMagnetRewardAdFailed();
+					}
+				}
+				console.log(result);
+            },
+            null,
+            'MagnetCordovaPlugin',
+            'loadRewardAd',
+			[
+				{'AD_UNIT_ID': addUnitId}
+            ]
+        );
+    },
+    MagnetShowRewardAd: function () {
+		var self = this;
+        cordova.exec(
+            function (result) {
+				if (typeof result == "string") {
+					if (result == "onRewardSuccessful") {
+						if (self.onRewardSuccessful)
+							self.onRewardSuccessful();
+					}	
+					else if (result == "onRewardFail") {
+						if (self.onRewardFail)
+							self.onRewardFail();
+					}
+				}
+				console.log(result);
+            },
+            null,
+            'MagnetCordovaPlugin',
+            'showRewardAd',
+            []
+        );
+    },
+    MagnetShowBanner: function (addUnitId, position) {
+        cordova.exec(
+            null,
+            null,
+            'MagnetCordovaPlugin',
             'ShowBanner',
             [
                 {'AD_UNIT_ID': addUnitId, 'BANNER_POSITION': position}
             ]
         );
     },
-	
-    MagnetRemoveBanner: function (successCallback, failureCallback) {
+    MagnetRemoveBanner: function () {
         cordova.exec(
-            successCallback,
-            failureCallback,
-            'MdMagnet',
+            null,
+            null,
+            'MagnetCordovaPlugin',
             'removeBanner',
             []
         );
-    }
+    },
+	onMagnetInterstitialAdReceived : null,
+	onMagnetInterstitialAdFailed : null,
+	onMagnetRewardAdReceived : null,
+	onMagnetRewardAdFailed : null,
+	onRewardSuccessful : null,
+	onRewardFail : null
 };
-
-module.exports = magnet;
